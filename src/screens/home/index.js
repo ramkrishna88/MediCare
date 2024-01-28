@@ -1,5 +1,13 @@
 import React from 'react';
 import {View, Text, ImageBackground, StyleSheet} from 'react-native';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {
+  faHome,
+  faComment,
+  faCalendar,
+  faUser,
+  faSignOutAlt,
+} from '@fortawesome/free-solid-svg-icons';
 
 const HomeScreen = () => {
   return (

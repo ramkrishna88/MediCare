@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Alert, TouchableOpacity, Image} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 import {
   LoginScreen,
   RegisterScreen,
@@ -9,6 +9,8 @@ import {
   HomeScreen,
 } from '../screens/index';
 import auth from '@react-native-firebase/auth';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 
 const Stack = createNativeStackNavigator();
 
@@ -75,10 +77,11 @@ const AppNavigation = () => {
           // eslint-disable-next-line react/no-unstable-nested-components
           headerRight: () => (
             <TouchableOpacity onPress={() => handleLogout(navigation)}>
-              {/* Replace the source with the path to your image for the logout button */}
-              <Image
-                source={require('../asset/imgs/logout.png')}
-                style={{width: 30, height: 30, marginRight: 15}}
+              <FontAwesomeIcon
+                icon={faSignOutAlt}
+                size={24}
+                color="black"
+                style={{marginRight: 15}}
               />
             </TouchableOpacity>
           ),
