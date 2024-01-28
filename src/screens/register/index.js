@@ -79,7 +79,7 @@ const Register = ({navigation}) => {
 
       // Navigate based on user type
       if (selectedUserType === 'Patient') {
-        navigation.navigate('Authenticated');
+        navigation.navigate('Home');
       } else if (selectedUserType === 'Doctor') {
         navigation.navigate('Qualification');
       }
