@@ -8,12 +8,15 @@ import {
   Modal,
   FlatList,
   Alert,
+  ImageBackground,
 } from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCalendarCheck, faUserDoctor} from '@fortawesome/free-solid-svg-icons';
 import DatePicker from 'react-native-date-picker';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
+
+const backgroundImage = require('../../asset/imgs/search.png');
 
 const AppointmentScreen = ({navigation}) => {
   const [date, setDate] = useState(new Date());
@@ -85,89 +88,95 @@ const AppointmentScreen = ({navigation}) => {
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Book an Appointment</Text>
+    <ImageBackground source={backgroundImage} style={styles.backgroundImage}>
+      <View style={styles.container}>
+        <Text style={styles.heading}>Book an Appointment</Text>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Enter Customer ID"
-          value={currentUser.uid}
-        />
-      </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter Customer ID"
+            placeholderTextColor={'black'}
+            value={currentUser.uid}
+          />
+        </View>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Select Date and Time"
-          value={textInputValue}
-          editable={false}
-        />
-        <TouchableOpacity
-          onPress={() => setOpen(true)}
-          style={styles.iconContainer}>
-          <FontAwesomeIcon icon={faCalendarCheck} size={20} color="green" />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Select Doctor"
-          value={selectedDoctor}
-          editable={false}
-          onTouchStart={() => setShowDoctorModal(true)}
-        />
-        <TouchableOpacity
-          onPress={() => setShowDoctorModal(true)}
-          style={styles.iconContainer}>
-          <FontAwesomeIcon icon={faUserDoctor} size={20} color="blue" />
-        </TouchableOpacity>
-      </View>
-
-      <TouchableOpacity
-        style={styles.bookButton}
-        onPress={handleBookAppointment}>
-        <Text style={styles.buttonText}>Book Appointment</Text>
-      </TouchableOpacity>
-
-      {/* Doctor Selection Modal */}
-      <Modal
-        animationType="slide"
-        transparent={false}
-        visible={showDoctorModal}
-        onRequestClose={() => setShowDoctorModal(false)}>
-        <View style={styles.modalContainer}>
-          <Text style={styles.modalHeading}>Select Doctor</Text>
-          <FlatList
-            data={doctors}
-            keyExtractor={item => item.id}
-            renderItem={renderDoctorItem}
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Select Date and Time"
+            placeholderTextColor={'black'}
+            value={textInputValue}
+            editable={false}
           />
           <TouchableOpacity
-            style={styles.modalCloseButton}
-            onPress={() => setShowDoctorModal(false)}>
-            <Text style={styles.modalCloseButtonText}>Close</Text>
+            onPress={() => setOpen(true)}
+            style={styles.iconContainer}>
+            <FontAwesomeIcon icon={faCalendarCheck} size={20} color="green" />
           </TouchableOpacity>
         </View>
-      </Modal>
 
-      <DatePicker
-        modal
-        open={open}
-        date={date}
-        onConfirm={handleDateSelect}
-        onCancel={() => setOpen(false)}
-      />
-    </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Select Doctor"
+            placeholderTextColor={'black'}
+            value={selectedDoctor}
+            editable={false}
+            onTouchStart={() => setShowDoctorModal(true)}
+          />
+          <TouchableOpacity
+            onPress={() => setShowDoctorModal(true)}
+            style={styles.iconContainer}>
+            <FontAwesomeIcon icon={faUserDoctor} size={20} color="blue" />
+          </TouchableOpacity>
+        </View>
+
+        <TouchableOpacity
+          style={styles.bookButton}
+          onPress={handleBookAppointment}>
+          <Text style={styles.buttonText}>Book Appointment</Text>
+        </TouchableOpacity>
+
+        {/* Doctor Selection Modal */}
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={showDoctorModal}
+          onRequestClose={() => setShowDoctorModal(false)}>
+          <View style={styles.modalContainer}>
+            <Text style={styles.modalHeading}>Select Doctor</Text>
+            <FlatList
+              data={doctors}
+              keyExtractor={item => item.id}
+              renderItem={renderDoctorItem}
+            />
+            <TouchableOpacity
+              style={styles.modalCloseButton}
+              onPress={() => setShowDoctorModal(false)}>
+              <Text style={styles.modalCloseButtonText}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
+
+        <DatePicker
+          modal
+          open={open}
+          date={date}
+          onConfirm={handleDateSelect}
+          onCancel={() => setOpen(false)}
+        />
+      </View>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.7)',
     padding: 20,
+    borderRadius: 2,
   },
   heading: {
     fontSize: 20,
@@ -179,6 +188,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
+    fontStyle: 'italic',
   },
   textInput: {
     flex: 1,
@@ -241,6 +251,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#fff',
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
 });
 
