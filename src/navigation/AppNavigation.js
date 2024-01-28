@@ -7,6 +7,9 @@ import {
   Qualification,
   SplashScreen,
   HomeScreen,
+  ProfileScreen,
+  SearchDoctor,
+  AppointmentScreen,
 } from '../screens/index';
 import auth from '@react-native-firebase/auth';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -86,6 +89,33 @@ const AppNavigation = () => {
             </TouchableOpacity>
           ),
         })}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          headerShown: true,
+          headerBackTitle: '',
+          headerBackTitleVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="SearchDoctor"
+        component={SearchDoctor}
+        options={{
+          headerShown: true,
+          headerBackTitle: '',
+          headerBackTitleVisible: false,
+        }}
+      />
+      <Stack.Screen
+        name="Appointment"
+        component={AppointmentScreen}
+        options={{
+          headerShown: true,
+          headerBackTitle: '',
+          headerBackTitleVisible: false,
+        }}
       />
     </Stack.Navigator>
   );
