@@ -16,7 +16,7 @@ const Login = ({navigation}) => {
       // Clear email and password fields
       setEmail('');
       setPassword('');
-      navigation.navigate('Authenticated');
+      navigation.navigate('Home');
     } catch (error) {
       console.error('Login error:', error.message);
       Alert.alert(
