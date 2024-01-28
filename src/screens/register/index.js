@@ -13,7 +13,7 @@ import {CustomButton, CustomTextInput} from '../../components';
 import auth from '@react-native-firebase/auth';
 import firestore from '@react-native-firebase/firestore';
 
-const backgroundImage = require('../../assest/imgs/register.png');
+const backgroundImage = require('../../asset/imgs/register.png');
 const specialties = ['Patient', 'Dermatology', 'Cardiology', 'Endocrinology'];
 const userTypes = ['Doctor', 'Patient'];
 

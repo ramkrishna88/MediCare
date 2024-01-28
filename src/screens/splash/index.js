@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, ImageBackground, StyleSheet} from 'react-native';
 import {CustomButton} from '../../components';
 
-const backgroundImage = require('../../assest/imgs/splash.png');
+const backgroundImage = require('../../asset/imgs/splash.png');
 
 const Splash = ({navigation}) => {
   return (

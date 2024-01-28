@@ -13,7 +13,7 @@ import {CustomButton, CustomTextInput} from '../../components';
 import firestore from '@react-native-firebase/firestore';
 import auth from '@react-native-firebase/auth';
 
-const backgroundImage = require('../../assest/imgs/qualification1.png');
+const backgroundImage = require('../../asset/imgs/qualification1.png');
 
 const Qualification = ({navigation}) => {
   const [degreeName, setDegreeName] = useState('');

@@ -3,7 +3,7 @@ import {View, ImageBackground, StyleSheet, Alert} from 'react-native';
 import {CustomButton, CustomTextInput} from '../../components';
 import auth from '@react-native-firebase/auth';
 
-const backgroundImage = require('../../assest/imgs/login.png');
+const backgroundImage = require('../../asset/imgs/login.png');
 
 const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
